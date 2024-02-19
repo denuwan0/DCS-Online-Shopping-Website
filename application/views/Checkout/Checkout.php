@@ -182,13 +182,19 @@
                                 <label class="custom-control-label" for="directcheck">Direct Check</label>
                             </div>
                         </div>
-                        <div class="form-group mb-4">
+                        <div class="form-group">
                             <div class="custom-control custom-radio">
                                 <input type="radio" class="custom-control-input" name="payment" id="banktransfer">
                                 <label class="custom-control-label" for="banktransfer">Bank Transfer</label>
                             </div>
                         </div>
-                        <button class="btn btn-block btn-primary font-weight-bold py-3">Place Order</button>
+						<div class="form-group mb-4">
+                            <div class="custom-control custom-radio">
+                                <input type="radio" class="custom-control-input" name="payment" id="lankaQr">
+                                <label class="custom-control-label" for="lankaQr">Lanka QR</label>
+                            </div>
+                        </div>
+                        <button class="btn btn-block btn-primary font-weight-bold py-3">Pay Now</button>
                     </div>
                 </div>
             </div>

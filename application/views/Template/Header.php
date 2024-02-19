@@ -21,9 +21,15 @@
     <!-- Libraries Stylesheet -->
     <link href="<?php echo base_url();?>assets/lib/animate/animate.min.css" rel="stylesheet">
     <link href="<?php echo base_url();?>assets/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+	
+	<!-- jQuery -->
+	<script src="<?php echo base_url() ?>assets/lib/jquery/jquery.min.js"></script>
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="<?php echo base_url();?>assets/css/style.css" rel="stylesheet">
+	<script>
+		var API = "http://localhost/API/";
+	</script>
 </head>
 
 <body>
