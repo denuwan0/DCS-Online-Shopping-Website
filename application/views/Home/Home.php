@@ -155,7 +155,7 @@ $.ajax({
 	cache : false,
 	async: true,
 	dataType: "json",
-	url: API+"ItemCategory/",
+	url: API+"Online/products",
 	success: function(data, result){
 		console.log(data);
 		var prdDivHTML = '';
