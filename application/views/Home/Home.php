@@ -97,107 +97,146 @@
 
 
     
-
-
-
-
-    <!-- Products Start -->
+	<!-- Feature Products Start -->
     <div class="container-fluid pt-5 pb-3">
-        <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="bg-secondary pr-3">Recent Products</span></h2>
-        <div class="row px-xl-5" id="prdDiv">
+        <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="bg-secondary pr-3">Feature Products</span></h2>
+        <div class="row px-xl-5" id="FeaturePrdDiv">
             
 			
             
         </div>
     </div>
-    <!-- Products End -->
+    <!-- Feature Products End -->
+
+
+    <!-- Recent Products Start -->
+    <div class="container-fluid pt-5 pb-3">
+        <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="bg-secondary pr-3">Recent Products</span></h2>
+        <div class="row px-xl-5" id="recentPrdDiv">
+            
+			
+            
+        </div>
+    </div>
+    <!-- Recent Products End -->
 
 <script>
-$.ajax({
-	type: "POST",
-	cache : false,
-	async: true,
-	dataType: "json",
-	url: API+"ItemCategory/",
-	success: function(data, result){
-		console.log(data);
-		var catDivHTML = '';
-		
-		$.each(data, function(index, item) {
+function loadCategories(){
+	$.ajax({
+		type: "POST",
+		cache : false,
+		async: true,
+		dataType: "json",
+		url: API+"ItemCategory/",
+		success: function(data, result){
+			console.log(data);
+			var catDivHTML = '';
 			
-			catDivHTML = '<div class="col-lg-3 col-md-4 col-sm-6 pb-1">'+
-							'<a class="text-decoration-none" href="">'+
-								'<div class="cat-item d-flex align-items-center mb-4">'+
-									'<div class="overflow-hidden" style="width: 100px; height: 100px;">'+
-										'<img class="img-fluid" src="'+item.cat_img_url+'" alt="">'+
+			$.each(data, function(index, item) {
+				
+				catDivHTML = '<div class="col-lg-3 col-md-4 col-sm-6 pb-1">'+
+								'<a class="text-decoration-none" href="">'+
+									'<div class="cat-item d-flex align-items-center mb-4">'+
+										'<div class="overflow-hidden" style="width: 100px; height: 100px;">'+
+											'<img class="img-fluid" src="'+item.cat_img_url+'" alt="">'+
+										'</div>'+
+										'<div class="flex-fill pl-3">'+
+											'<h6>'+item.category_name+'</h6>'+
+											'<small class="text-body"></small>'+
+										'</div>'+
 									'</div>'+
-									'<div class="flex-fill pl-3">'+
-										'<h6>'+item.category_name+'</h6>'+
-										'<small class="text-body"></small>'+
-									'</div>'+
-								'</div>'+
-							'</a>'+
-						'</div> ';
+								'</a>'+
+							'</div> ';
+				
+				$('#catDiv').append(catDivHTML);
+				
+			});
 			
-			$('#catDiv').append(catDivHTML);
+		},
+		error: function(XMLHttpRequest, textStatus, errorThrown) {						
 			
-        });
-		
-	},
-	error: function(XMLHttpRequest, textStatus, errorThrown) {						
-		
-		//console.log(errorThrown);
-	}
-});
+			//console.log(errorThrown);
+		}
+	});
+}
+loadCategories();
 
-$.ajax({
-	type: "POST",
-	cache : false,
-	async: true,
-	dataType: "json",
-	url: API+"Online/products",
-	success: function(data, result){
-		console.log(data);
-		var prdDivHTML = '';
-		
-		$.each(data, function(index, item) {
+function loadProducts(){
+	$.ajax({
+		type: "POST",
+		cache : false,
+		async: true,
+		dataType: "json",
+		url: API+"Online/products",
+		success: function(data, result){
+			//console.log(data);
+			var FeaturePrdDiv = '';
+			var recentPrdDiv = '';
 			
-			prdDivHTML = '<div class="col-lg-3 col-md-4 col-sm-6 pb-1">'+
-								'<div class="product-item bg-light mb-4">'+
-									'<div class="product-img position-relative overflow-hidden">'+
-										'<img class="img-fluid w-100" src="<?php echo base_url();?>assets/img/product-1.jpg" alt="">'+
-										'<div class="product-action">'+
-											'<a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-shopping-cart"></i></a>'+
-											'<a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-search"></i></a>'+
+			$.each(data, function(index, item) {
+				console.log(item);				
+				if(item.is_feature == 1){
+					FeaturePrdDiv = '<div class="col-lg-3 col-md-4 col-sm-6 pb-1">'+
+									'<div class="product-item bg-light mb-4">'+
+										'<div class="product-img position-relative overflow-hidden">'+
+											'<img class="img-fluid w-100" src="'+item.item_image_url+'" alt="">'+
+											'<div class="product-action">'+
+												'<a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-shopping-cart"></i></a>'+
+												'<a class="btn btn-outline-dark btn-square" href="<?php echo base_url();?>product/detail/'+item.item_id+'"><i class="fa fa-search"></i></a>'+
+											'</div>'+
+										'</div>'+
+										'<div class="text-center py-4">'+
+											'<a class="h6 text-decoration-none text-truncate" href="">Product Name Goes Here</a>'+
+											'<div class="d-flex align-items-center justify-content-center mt-2">'+
+												'<h5>Rs.</h5><h5>1500</h5><!--h6 class="text-muted ml-2"><del>$123.00</del></h6-->'+
+											'</div>'+
 										'</div>'+
 									'</div>'+
-									'<div class="text-center py-4">'+
-										'<a class="h6 text-decoration-none text-truncate" href="">Product Name Goes Here</a>'+
-										'<div class="d-flex align-items-center justify-content-center mt-2">'+
-											'<h5>Rs.</h5><h5>1500</h5><!--h6 class="text-muted ml-2"><del>$123.00</del></h6-->'+
+								'</div>';
+								$('#FeaturePrdDiv').append(FeaturePrdDiv);
+				}
+				else{
+					
+					
+					
+					if(index-(Object.keys(data).length)  > -5){
+						
+						recentPrdDiv = '<div class="col-lg-3 col-md-4 col-sm-6 pb-1">'+
+									'<div class="product-item bg-light mb-4">'+
+										'<div class="product-img position-relative overflow-hidden" >'+
+											'<img class="img-fluid w-100"  src="'+item.item_image_url+'" alt="">'+
+											'<div class="product-action">'+
+												'<a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-shopping-cart"></i></a>'+
+												'<a class="btn btn-outline-dark btn-square" href="<?php echo base_url();?>product/detail/'+item.item_id+'"><i class="fa fa-search"></i></a>'+
+											'</div>'+
 										'</div>'+
-										'<div class="d-flex align-items-center justify-content-center mb-1">'+
-											'<small class="fa fa-star text-primary mr-1"></small>'+
-											'<small class="fa fa-star text-primary mr-1"></small>'+
-											'<small class="fa fa-star text-primary mr-1"></small>'+
-											'<small class="fa fa-star text-primary mr-1"></small>'+
-											'<small class="fa fa-star text-primary mr-1"></small>'+
-											'<small>(99)</small>'+
+										'<div class="text-center py-4">'+
+											'<a class="h6 text-decoration-none text-truncate" href="">Product Name Goes Here</a>'+
+											'<div class="d-flex align-items-center justify-content-center mt-2">'+
+												'<h5>Rs.</h5><h5>1500</h5><!--h6 class="text-muted ml-2"><del>$123.00</del></h6-->'+
+											'</div>'+
 										'</div>'+
 									'</div>'+
-								'</div>'+
-							'</div>';
+								'</div>';
+								$('#recentPrdDiv').append(recentPrdDiv);
+					}
+					
+				}
+				
+				
+				
+				
+				
+			});
 			
-			$('#prdDiv').append(prdDivHTML);
+		},
+		error: function(XMLHttpRequest, textStatus, errorThrown) {						
 			
-        });
-		
-	},
-	error: function(XMLHttpRequest, textStatus, errorThrown) {						
-		
-		//console.log(errorThrown);
-	}
-});
+			//console.log(errorThrown);
+		}
+	});
+}
+loadProducts();
 </script>
     
 
