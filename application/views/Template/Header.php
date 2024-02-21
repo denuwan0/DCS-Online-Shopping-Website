@@ -49,8 +49,35 @@
                     <div class="btn-group">
                         <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">My Account</button>
                         <div class="dropdown-menu dropdown-menu-right">
-                            <button class="dropdown-item" type="button">Sign in</button>
-                            <button class="dropdown-item" type="button">Sign up</button>
+							<div class="col-md-12">
+								<form name="sentMessage" id="contactForm" novalidate="novalidate">
+									<div class="control-group">
+										<input type="text" class="form-control" id="name" placeholder="Your Name" required="required" data-validation-required-message="Please enter your name" autocomplete="off" aria-invalid="false">
+										<p class="help-block text-danger"></p>
+									</div>
+									<div class="control-group">
+										<input type="email" class="form-control" id="email" placeholder="Your Email" required="required" data-validation-required-message="Please enter your email">
+										<p class="help-block text-danger"></p>
+									</div>
+									<div class="control-group">
+										<input type="text" class="form-control" id="subject" placeholder="Subject" required="required" data-validation-required-message="Please enter a subject">
+										<p class="help-block text-danger"></p>
+									</div>
+									<div class="control-group">
+										<textarea class="form-control" rows="8" id="message" placeholder="Message" required="required" data-validation-required-message="Please enter your message"></textarea>
+										<p class="help-block text-danger"></p>
+									</div>
+									<div>
+										<button class="btn btn-primary py-2 px-4" type="submit" id="sendMessageButton">Send
+											Message</button>
+									</div>
+								</form>
+							</div>
+							<div class="col-md-6">
+								<button class="dropdown-item" type="button">Sign in</button>
+								<button class="dropdown-item" type="button">Sign up</button>
+							</div>
+                          
                         </div>
                     </div>
                     <div class="btn-group mx-2">
