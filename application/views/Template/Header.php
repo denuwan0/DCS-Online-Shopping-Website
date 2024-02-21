@@ -145,7 +145,7 @@
                         <div class="navbar-nav mr-auto py-0">
                             <a href="<?php echo base_url()?>" class="nav-item nav-link active">Home</a>
                             <a href="<?php echo base_url().'Shop';?>" class="nav-item nav-link">Shop</a>
-                            <a href="<?php echo base_url().'Product';?>" class="nav-item nav-link">Shop Detail</a>
+                            <!--a href="<?php echo base_url().'Product';?>" class="nav-item nav-link">Shop Detail</a-->
 							<a href="<?php echo base_url().'Cart';?>" class="nav-item nav-link">Shopping Cart</a>                            
                             <a href="<?php echo base_url().'Contact';?>" class="nav-item nav-link">Contact</a>
                         </div>

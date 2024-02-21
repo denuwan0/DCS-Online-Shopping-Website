@@ -17,11 +17,16 @@ class Product extends CI_Controller {
 		$this->load->view('/Template/Footer',$phparray);
 	}
 	
-	public function detail()
+	public function detail($id)
 	{	
+			
+		$data = $this->Base_model->product_details($id);
+		//var_dump($data);
+				
 		$phparray = $this->Base_model->company_contact();
+		
 		$this->load->view('/Template/Header',$phparray);	
-		$this->load->view('/Product/Product');
+		$this->load->view('/Product/Product',$data);
 		$this->load->view('/Template/Footer',$phparray);
 	}
 		
