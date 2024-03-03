@@ -69,6 +69,33 @@
 
     <!-- Template Javascript -->
     <script src="<?php echo base_url();?>assets/js/main.js"></script>
+	<script>
+	$(document).on('click', '#signInBtn', function(){
+		$(document).('#')
+		
+		$.ajax({
+			type: "GET",
+			cache : false,
+			async: true,
+			dataType: "json",
+			contentType: 'application/json',
+			url: API+"RetailInvoice/printInvoice/?id="+id,
+			success: function(data, result){
+				
+				
+				
+				
+			},
+			error: function(XMLHttpRequest, textStatus, errorThrown) {						
+				console.log(textStatus);					
+			}
+		});	
+	})
+	
+	function logIn(){
+		
+	}
+	</script>
 </body>
 
 </html>

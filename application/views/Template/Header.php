@@ -48,36 +48,28 @@
                 <div class="d-inline-flex align-items-center">
                     <div class="btn-group">
                         <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">My Account</button>
-                        <div class="dropdown-menu dropdown-menu-right">
+                        <div class="dropdown-menu dropdown-menu-right" style="min-width:18rem">
 							<div class="col-md-12">
 								<form name="sentMessage" id="contactForm" novalidate="novalidate">
 									<div class="control-group">
-										<input type="text" class="form-control" id="name" placeholder="Your Name" required="required" data-validation-required-message="Please enter your name" autocomplete="off" aria-invalid="false">
+										<input type="text" class="form-control" id="username" placeholder="Username" required="required" data-validation-required-message="Please enter your name" autocomplete="off" aria-invalid="false">
 										<p class="help-block text-danger"></p>
 									</div>
 									<div class="control-group">
-										<input type="email" class="form-control" id="email" placeholder="Your Email" required="required" data-validation-required-message="Please enter your email">
+										<input type="password" class="form-control" id="password" placeholder="Password" required="required" data-validation-required-message="Please enter your email">
 										<p class="help-block text-danger"></p>
-									</div>
-									<div class="control-group">
-										<input type="text" class="form-control" id="subject" placeholder="Subject" required="required" data-validation-required-message="Please enter a subject">
-										<p class="help-block text-danger"></p>
-									</div>
-									<div class="control-group">
-										<textarea class="form-control" rows="8" id="message" placeholder="Message" required="required" data-validation-required-message="Please enter your message"></textarea>
-										<p class="help-block text-danger"></p>
-									</div>
-									<div>
-										<button class="btn btn-primary py-2 px-4" type="submit" id="sendMessageButton">Send
-											Message</button>
 									</div>
 								</form>
 							</div>
-							<div class="col-md-6">
-								<button class="dropdown-item" type="button">Sign in</button>
-								<button class="dropdown-item" type="button">Sign up</button>
+							<div class="row col-md-12 mb-2">
+								<button class="col-md-12 ml-3" type="button" id="signInBtn">Sign in</button>
 							</div>
-                          
+							<div class="row col-md-12 mb-2">
+								<button class="col-md-12 ml-3" type="button" id="signOutBtn">Sign up</button>
+							</div>
+							<div class="row col-md-12 mb-2">
+								<button class="col-md-12 ml-3" type="button" style="background: gold;" id="logOutBtn">Logout</button>
+							</div>
                         </div>
                     </div>
                     <div class="btn-group mx-2">
@@ -103,7 +95,7 @@
         </div>
         <div class="row align-items-center bg-light py-3 px-xl-5 d-none d-lg-flex">
             <div class="col-lg-4">
-                <a href="" class="text-decoration-none">
+                <a href="<?php echo base_url();?>" class="text-decoration-none">
                     <span class="h1 text-uppercase text-primary bg-dark px-2">DCS</span>
                     <span class="h1 text-uppercase text-dark bg-primary px-2 ml-n1">Online Shop</span>
                 </a>
