@@ -71,7 +71,8 @@
     <script src="<?php echo base_url();?>assets/js/main.js"></script>
 	<script>
 	$(document).on('click', '#signInBtn', function(){
-		$(document).('#')
+		var username = $('#username').val();
+		var password = $('#password').val();
 		
 		$.ajax({
 			type: "GET",
