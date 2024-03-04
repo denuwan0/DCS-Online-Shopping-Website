@@ -79,7 +79,7 @@
 			async: true,
 			dataType: "json",
 			contentType: 'application/json',
-			url: API+"RetailInvoice/printInvoice/?id="+id,
+			url: web+"RetailInvoice/ApiRequest/",
 			success: function(data, result){
 				
 				

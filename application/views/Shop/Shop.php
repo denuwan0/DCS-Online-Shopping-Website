@@ -93,7 +93,7 @@ function loadCategories(){
 		cache : false,
 		async: true,
 		dataType: "json",
-		url: API+"ItemCategory/",
+		url: API+"ItemCategory/fetch_all_active",
 		success: function(data, result){
 			console.log(data);
 			var catDivHTML = '';

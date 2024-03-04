@@ -29,6 +29,7 @@
     <link href="<?php echo base_url();?>assets/css/style.css" rel="stylesheet">
 	<script>
 		var API = "http://localhost/API/";
+		var web = "http://localhost/web/";
 	</script>
 </head>
 
@@ -50,25 +51,37 @@
                         <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">My Account</button>
                         <div class="dropdown-menu dropdown-menu-right" style="min-width:18rem">
 							<div class="col-md-12">
-								<form name="sentMessage" id="contactForm" novalidate="novalidate">
-									<div class="control-group">
-										<input type="text" class="form-control" id="username" placeholder="Username" required="required" data-validation-required-message="Please enter your name" autocomplete="off" aria-invalid="false">
-										<p class="help-block text-danger"></p>
-									</div>
-									<div class="control-group">
-										<input type="password" class="form-control" id="password" placeholder="Password" required="required" data-validation-required-message="Please enter your email">
-										<p class="help-block text-danger"></p>
-									</div>
-								</form>
-							</div>
-							<div class="row col-md-12 mb-2">
-								<button class="col-md-12 ml-3" type="button" id="signInBtn">Sign in</button>
-							</div>
-							<div class="row col-md-12 mb-2">
-								<button class="col-md-12 ml-3" type="button" id="signOutBtn">Sign up</button>
-							</div>
-							<div class="row col-md-12 mb-2">
-								<button class="col-md-12 ml-3" type="button" style="background: gold;" id="logOutBtn">Logout</button>
+								
+							
+							<?php 
+								$is_user_logged_in = false;
+								if($is_user_logged_in == true){
+									echo '<div class="row col-md-12 mb-2">
+												<button class="col-md-12 ml-3" type="button" id="profileBtn">My Profile</button>
+											</div>
+											<div class="row col-md-12 mb-2">
+												<button class="col-md-12 ml-3" type="button" style="background: gold;" id="logOutBtn">Logout</button>
+											</div>';
+								}
+								else if($is_user_logged_in == false){
+									echo '	<form name="sentMessage" id="contactForm" novalidate="novalidate">
+												<div class="control-group">
+													<input type="text" class="form-control" id="username" placeholder="Username" required="required" data-validation-required-message="Please enter your name" autocomplete="off" aria-invalid="false">
+													<p class="help-block text-danger"></p>
+												</div>
+												<div class="control-group">
+													<input type="password" class="form-control" id="password" placeholder="Password" required="required" data-validation-required-message="Please enter your email">
+													<p class="help-block text-danger"></p>
+												</div>
+											</form>
+											<div class="row col-md-12 mb-2">
+												<button class="col-md-12 ml-3" type="button" id="signInBtn">Sign in</button>
+											</div>
+											<div class="row col-md-12 mb-2">
+												<button class="col-md-12 ml-3" type="button" id="signOutBtn">Sign up</button>
+											</div>';
+								}
+							?>
 							</div>
                         </div>
                     </div>
