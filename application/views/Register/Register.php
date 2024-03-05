@@ -4,75 +4,22 @@
             <div class="col-12">
                 <nav class="breadcrumb bg-light mb-30">
                     <a class="breadcrumb-item text-dark" href="<?php echo base_url();?>">Home</a>
-                    <a class="breadcrumb-item text-dark" href="<?php echo base_url().'Cart';?>">Cart</a>
-                    <span class="breadcrumb-item active">Checkout</span>
+                    <span class="breadcrumb-item active">Register</span>
                 </nav>
             </div>
         </div>
     </div>
     <!-- Breadcrumb End -->
-	<div class="modal" id="lankaQrModal">
-	  <div class="modal-dialog">
-		<div class="modal-content">
 
-		  <!-- Modal Header -->
-		  <div class="modal-header">
-			<h4 class="modal-title">Lanka QR</h4>
-			<button type="button" class="close" data-dismiss="modal">&times;</button>
-		  </div>
-
-		  <!-- Modal Body -->
-		  <div class="modal-body">
-			<!-- Image goes here -->
-			<img src="<?php echo base_url();?>assets/img/lankaQR.jpg" alt="Modal Image">
-		  </div>
-
-		  <!-- Modal Footer -->
-		  <div class="modal-footer">
-			<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-		  </div>
-
-		</div>
-	  </div>
-	</div>
-	<div class="modal" id="bankAccModal">
-	  <div class="modal-dialog">
-		<div class="modal-content">
-
-		  <!-- Modal Header -->
-		  <div class="modal-header">
-			<h4 class="modal-title">Scan QR code</h4>
-			
-			<button type="button" class="close" data-dismiss="modal">&times;</button>
-		  </div>
-
-		  <!-- Modal Body -->
-		  
-		  <div class="modal-body" style="    align-self: center;">
-		  
-			<!-- Image goes here -->
-			<img src="<?php echo base_url();?>assets/img/lankaQR.jpg" style="max-height: 200px; max-width: 200px" alt="Modal Image">
-			
-		  </div>
-
-		  <!-- Modal Footer -->
-		  <div class="modal-footer">
-		  <h6 class="">*Please enter your NIC as payment refference</h6>
-			<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-		  </div>
-
-		</div>
-	  </div>
-	</div>
 
     <!-- Checkout Start -->
     <div class="container-fluid">
         <div class="row px-xl-5">
-            <div class="col-lg-8">
-                <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">Billing Address</span></h5>
+            <div class="col-lg-12">
+                <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">Your Details</span></h5>
                 <div class="bg-light p-30 mb-5">
                     <div class="row">
-                        <div class="col-md-6 form-group">
+						<div class="col-md-6 form-group">
                             <label>NIC No.</label>
                             <input class="form-control" type="text" placeholder="NIC No.">
                         </div>
@@ -100,21 +47,15 @@
                             <label>Shipping Address</label>
                             <input class="form-control" type="text" placeholder="Address line 2">
                         </div>
+                        
                         <div class="col-md-12 form-group">
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="newaccount">
-                                <label class="custom-control-label" for="newaccount">Create an account</label>
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="shipto">
-                                <label class="custom-control-label" for="shipto"  data-toggle="collapse" data-target="#shipping-address">Ship to NIC address</label>
+                            <div class="">
+                                <button class="btn btn-primary py-2 px-4" type="submit" id="sendMessageButton">Register</button>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!--div class="collapse mb-5" id="shipping-address">
+                <div class="collapse mb-5" id="shipping-address">
                     <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">Shipping Address</span></h5>
                     <div class="bg-light p-30">
                         <div class="row">
@@ -165,87 +106,13 @@
                             </div>
                         </div>
                     </div>
-                </div-->
-            </div>
-            <div class="col-lg-4">
-                <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">Order Total</span></h5>
-                <div class="bg-light p-30 mb-5">
-                    <div class="border-bottom">
-                        <h6 class="mb-3">Products</h6>
-                        <div class="d-flex justify-content-between">
-                            <p>Acro Jack / Pipe Support</p>
-                            <p>Rs. 35000.00</p>
-                        </div>
-                        <div class="d-flex justify-content-between">
-                            <p>Column box 8ft</p>
-                            <p>Rs. 30000.00</p>
-                        </div>
-                    </div>
-                    <div class="border-bottom pt-3 pb-2">
-                        <div class="d-flex justify-content-between mb-3">
-                            <h6>Subtotal</h6>
-                            <h6>Rs. 65000.00</h6>
-                        </div>
-                        <div class="d-flex justify-content-between">
-                            <h6 class="font-weight-medium">Shipping</h6>
-                            <h6 class="font-weight-medium">FREE</h6>
-                        </div>
-                    </div>
-                    <div class="pt-2">
-                        <div class="d-flex justify-content-between mt-2">
-                            <h5>Total</h5>
-                            <h5>Rs. 65000.00</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="mb-5">
-                    <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">Payment</span></h5>
-                    <div class="bg-light p-30">
-                        <!--div class="form-group">
-                            <div class="custom-control custom-radio">
-                                <input type="radio" class="custom-control-input" name="payment" id="paypal">
-                                <label class="custom-control-label" for="paypal">Paypal</label>
-                            </div>
-                        </div-->
-                        <!--div class="form-group">
-                            <div class="custom-control custom-radio">
-                                <input type="radio" class="custom-control-input" name="payment" id="directcheck">
-                                <label class="custom-control-label" for="directcheck">Direct Check</label>
-                            </div>
-                        </div-->
-                        <div class="form-group">
-                            <div class="custom-control custom-radio">
-                                <input type="radio" class="custom-control-input payment" name="payment" id="banktransfer">
-                                <label class="custom-control-label" for="banktransfer">Bank Transfer</label>
-                            </div>
-                        </div>
-						<div class="form-group mb-4">
-                            <div class="custom-control custom-radio">
-                                <input type="radio" class="custom-control-input payment" name="payment" id="lankaQr">
-                                <label class="custom-control-label" for="lankaQr">Lanka QR</label>
-                            </div>
-                        </div>
-                        <button class="btn btn-block btn-primary font-weight-bold py-3" id="PayNowBtn">Pay Now</button>
-                    </div>
                 </div>
             </div>
+            
         </div>
     </div>
     <!-- Checkout End -->
 <script>
-$('#PayNowBtn').click(function(){
-	var payType = $(this).parent().parent().find('.payment').attr('id');
-	console.log( $('input[name=payment]:radio:checked').attr('id'));
-	if(payType == 'banktransfer'){
-		 $("#bankAccModal").modal('show');
-	}
-	if(payType == 'lankaQr'){
-		 $("#lankaQrModal").modal('show');
-	}
-	
-})
-
-
 	$('#submit').click(function(e){
 	e.preventDefault();
 		

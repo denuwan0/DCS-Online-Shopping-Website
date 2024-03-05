@@ -79,7 +79,8 @@
 											</div>
 											<div class="row col-md-12 mb-2">
 												<button class="col-md-12 ml-3" type="button" id="signOutBtn">Sign up</button>
-											</div>';
+											</div>
+											<a href="<?php echo base_url();?>" class="text-decoration-none">Reset Password</a>';
 								}
 							?>
 							</div>
