@@ -50,7 +50,7 @@
             <div class="col-lg-9 col-md-8 scrollable-div">
                 <div class="row pb-3 content">
                     <div class="col-12 pb-1">
-                        <div class="d-flex align-items-center justify-content-between mb-4">
+                        <div class="d-flex align-items-center justify-content-between mb-4" >
                             
                         </div>
                     </div>
@@ -88,7 +88,7 @@ function loadCategories(){
 			$.each(data, function(index, item) {
 				
 				catDivHTML = '<div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">'+
-								'<input type="checkbox" class="custom-control-input" id="'+item.item_category_id+'">'+
+								'<input type="checkbox" class="custom-control-input categoryBox" id="'+item.item_category_id+'">'+
 								'<label class="custom-control-label" for="'+item.item_category_id+'">'+item.category_name+'</label>'+
 							'</div>';
 				
@@ -119,16 +119,81 @@ function loadProducts(){
 			$.each(data, function(index, item) {
 				
 				catDivHTML = '<div class="col-lg-4 col-md-6 col-sm-6 pb-1">'+
-								'<div class="product-item bg-light mb-4" id="productDiv">'+
+								'<div class="product-item bg-light mb-4" >'+
 									'<div class="product-img position-relative overflow-hidden">'+
-										'<img class="img-fluid w-100" src="" alt="">'+
+										'<img style="max-wdth:100px; max-height:200px; " class="img-fluid w-100" src="'+item.item_image_url+'" alt="">'+
+										'<div class="product-action">'+
+											'<a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-shopping-cart"></i></a>'+
+												'<a class="btn btn-outline-dark btn-square" href="<?php echo base_url();?>product/detail/'+item.item_id+'"><i class="fa fa-search"></i></a>'+
+										'</div>'+
+									'</div>'+
+									'<div class="text-center py-4">'+
+										'<a class="h6 text-decoration-none text-truncate" href="">'+item.item_name+'</a>'+
+										'<div class="d-flex align-items-center justify-content-center mt-2">'+
+											'<h5>$123.00</h5><h6 class="text-muted ml-2"><del>$123.00</del></h6>'+
+										'</div>'+
+										'<div class="d-flex align-items-center justify-content-center mb-1">'+
+											
+										'</div>'+
+									'</div>'+
+								'</div>'+
+							'</div>';
+				
+				$('.content').append(catDivHTML);
+				
+			});
+			
+		},
+		error: function(XMLHttpRequest, textStatus, errorThrown) {						
+			
+			//console.log(errorThrown);
+		}
+	});
+}
+loadProducts();
+
+$('.categoryBox').change(function(){
+	alert();
+})
+
+$(".categoryBox").change(function() {
+    if(this.checked) {
+        alert('checked');
+    }
+});
+
+$('.categoryBox').click('change', function(){
+    if($(this).is(':checked')){
+        alert('checked');
+    } else {
+        alert('un-checked');
+    }
+});
+
+function loadProductsByCat(cat){
+	$.ajax({
+		type: "POST",
+		cache : false,
+		async: true,
+		dataType: "json",
+		url: API+"Online/products",
+		success: function(data, result){
+			console.log(data);
+			var catDivHTML = '';
+			
+			$.each(data, function(index, item) {
+				
+				catDivHTML = '<div class="col-lg-4 col-md-6 col-sm-6 pb-1">'+
+								'<div class="product-item bg-light mb-4" >'+
+									'<div class="product-img position-relative overflow-hidden">'+
+										'<img style="max-wdth:100px; max-height:200px; " class="img-fluid w-100" src="'+item.item_image_url+'" alt="">'+
 										'<div class="product-action">'+
 											'<a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-shopping-cart"></i></a>'+
 											'<a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-search"></i></a>'+
 										'</div>'+
 									'</div>'+
 									'<div class="text-center py-4">'+
-										'<a class="h6 text-decoration-none text-truncate" href="">Product Name Goes Here</a>'+
+										'<a class="h6 text-decoration-none text-truncate" href="">'+item.item_name+'</a>'+
 										'<div class="d-flex align-items-center justify-content-center mt-2">'+
 											'<h5>$123.00</h5><h6 class="text-muted ml-2"><del>$123.00</del></h6>'+
 										'</div>'+
@@ -144,7 +209,7 @@ function loadProducts(){
 								'</div>'+
 							'</div>';
 				
-				$('#productDiv').append(catDivHTML);
+				$('.content').append(catDivHTML);
 				
 			});
 			
@@ -155,5 +220,5 @@ function loadProducts(){
 		}
 	});
 }
-loadProducts();
+loadProductsByCat();
 </script>

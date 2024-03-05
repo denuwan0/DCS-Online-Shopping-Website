@@ -45,9 +45,9 @@
                     &copy; <a class="text-primary" href="#"><?php echo $company_name;?></a>. All Rights Reserved. 
                 </p>
             </div>
-            <div class="col-md-6 px-xl-0 text-center text-md-right">
+            <!--div class="col-md-6 px-xl-0 text-center text-md-right">
                 <img class="img-fluid" src="<?php echo base_url();?>assets/img/payments.png" alt="">
-            </div>
+            </div-->
         </div>
     </div>
     <!-- Footer End -->

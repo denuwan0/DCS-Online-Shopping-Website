@@ -109,8 +109,8 @@
         <div class="row align-items-center bg-light py-3 px-xl-5 d-none d-lg-flex">
             <div class="col-lg-4">
                 <a href="<?php echo base_url();?>" class="text-decoration-none">
-                    <span class="h1 text-uppercase text-primary bg-dark px-2">DCS</span>
-                    <span class="h1 text-uppercase text-dark bg-primary px-2 ml-n1">Online Shop</span>
+                    <span class="h1 text-uppercase text-primary bg-dark px-2"><?php echo $company_name;?></span>
+                    <span class="h1 text-uppercase text-dark bg-primary px-2 ml-n1">Enterprices</span>
                 </a>
             </div>
             <div class="col-lg-4 col-6 text-left">
@@ -143,24 +143,7 @@
                     <i class="fa fa-angle-down text-dark"></i>
                 </a>
                 <nav class="collapse position-absolute navbar navbar-vertical navbar-light align-items-start p-0 bg-light" id="navbar-vertical" style="width: calc(100% - 30px); z-index: 999;">
-                    <div class="navbar-nav w-100">
-                        <div class="nav-item dropdown dropright">
-                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Dresses <i class="fa fa-angle-right float-right mt-1"></i></a>
-                            <div class="dropdown-menu position-absolute rounded-0 border-0 m-0">
-                                <a href="" class="dropdown-item">Men's Dresses</a>
-                                <a href="" class="dropdown-item">Women's Dresses</a>
-                                <a href="" class="dropdown-item">Baby's Dresses</a>
-                            </div>
-                        </div>
-                        <a href="" class="nav-item nav-link">Shirts</a>
-                        <a href="" class="nav-item nav-link">Jeans</a>
-                        <a href="" class="nav-item nav-link">Swimwear</a>
-                        <a href="" class="nav-item nav-link">Sleepwear</a>
-                        <a href="" class="nav-item nav-link">Sportswear</a>
-                        <a href="" class="nav-item nav-link">Jumpsuits</a>
-                        <a href="" class="nav-item nav-link">Blazers</a>
-                        <a href="" class="nav-item nav-link">Jackets</a>
-                        <a href="" class="nav-item nav-link">Shoes</a>
+                    <div class="navbar-nav w-100" id="categoryDropDown">
                     </div>
                 </nav>
             </div>
@@ -196,5 +179,33 @@
 
 
 
-
+<script>
+function loadCategories(){
+	$.ajax({
+		type: "POST",
+		cache : false,
+		async: true,
+		dataType: "json",
+		url: API+"ItemCategory/fetch_all_active",
+		success: function(data, result){
+			console.log(data);
+			var catDivHTML = '';
+			
+			$.each(data, function(index, item) {
+				
+				catDivHTML = '<a href="<?php echo base_url();?>Shop" class="nav-item nav-link">'+item.category_name+'</a>';
+				
+				$('#categoryDropDown').append(catDivHTML);
+				
+			});
+			
+		},
+		error: function(XMLHttpRequest, textStatus, errorThrown) {						
+			
+			//console.log(errorThrown);
+		}
+	});
+}
+loadCategories();
+</script>
     
