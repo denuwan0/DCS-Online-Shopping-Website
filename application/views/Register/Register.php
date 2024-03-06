@@ -46,8 +46,7 @@
                         <div class="col-md-6 form-group">
                             <label>Shipping Address</label>
                             <input class="form-control" type="text" placeholder="Address line 2">
-                        </div>
-                        
+                        </div>                        
                         <div class="col-md-12 form-group">
                             <div class="">
                                 <button class="btn btn-primary py-2 px-4" type="submit" id="sendMessageButton">Register</button>
