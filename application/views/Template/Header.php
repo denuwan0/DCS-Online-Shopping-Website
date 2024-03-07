@@ -21,7 +21,10 @@
     <!-- Libraries Stylesheet -->
     <link href="<?php echo base_url();?>assets/lib/animate/animate.min.css" rel="stylesheet">
     <link href="<?php echo base_url();?>assets/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-	
+	<!-- notyf css -->
+	<link rel="stylesheet" href="<?php echo base_url() ?>assets/css/notyf.min.css">
+	<!-- notyf js -->
+	<script src="<?php echo base_url() ?>assets/js/notyf.min.js"></script>
 	<!-- jQuery -->
 	<script src="<?php echo base_url() ?>assets/lib/jquery/jquery.min.js"></script>
 
@@ -80,7 +83,7 @@
 											<div class="row col-md-12 mb-2">
 												<button class="col-md-12 ml-3" type="button" id="signOutBtn">Sign up</button>
 											</div>
-											<a href="<?php echo base_url();?>" class="text-decoration-none">Reset Password</a>';
+											<a href="http://localhost/web/PassReset" class="text-decoration-none">Reset Password</a>';
 								}
 							?>
 							</div>

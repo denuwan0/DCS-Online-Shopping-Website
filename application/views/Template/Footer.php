@@ -73,28 +73,31 @@
 	$(document).on('click', '#signInBtn', function(){
 		var username = $('#username').val();
 		var password = $('#password').val();
+		logIn(username, password);
+		
+	})
+	
+	function logIn(username, password){
+		
+		var formData = new FormData();
+        formData.append('username',username);
+		formData.append('password',password);
 		
 		$.ajax({
-			type: "GET",
+			type: "POST",
 			cache : false,
 			async: true,
 			dataType: "json",
+			data: formData,	
 			contentType: 'application/json',
-			url: web+"RetailInvoice/ApiRequest/",
-			success: function(data, result){
-				
-				
-				
-				
+			url: API+"SysUser/authenticate/",
+			success: function(data, result){			
+				console.log(data);			
 			},
 			error: function(XMLHttpRequest, textStatus, errorThrown) {						
 				console.log(textStatus);					
 			}
 		});	
-	})
-	
-	function logIn(){
-		
 	}
 	</script>
 </body>
