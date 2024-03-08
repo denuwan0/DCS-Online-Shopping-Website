@@ -82,23 +82,52 @@
 		var formData = new FormData();
         formData.append('username',username);
 		formData.append('password',password);
-		
+		$("#lankaQrModal").modal('show');
 		$.ajax({
 			type: "POST",
-			cache : false,
 			async: true,
 			dataType: "json",
 			data: formData,	
-			contentType: 'application/json',
-			url: API+"SysUser/authenticate/",
+			processData: false,     
+			contentType: false,     
+			cache: false,
+			url: API+"SysUser/login/",
 			success: function(data, result){			
-				console.log(data);			
+				console.log(data);	
+				countDown();	
+				$("#lankaQrModal").modal('show');
+								
 			},
 			error: function(XMLHttpRequest, textStatus, errorThrown) {						
 				console.log(textStatus);					
 			}
 		});	
 	}
+	
+	/* $('#lankaQrModal').on('shown.bs.modal', function () {
+		var timer = $(this).data('timer') ? $(this).data('timer') :20000;
+		
+		$(this).delay(timer).fadeOut(200, function () {
+			$(this).modal('hide');
+		});
+		
+		
+	}) */
+	
+	function countDown() {
+		
+		var counter = 60;
+		var interval = setInterval(function() {
+			counter--;
+			// Display 'counter' wherever you want to display it.
+			 $('#countDown').html(counter);
+			if (counter == 0) {
+				// Display a login box
+				clearInterval(interval);
+				$("#lankaQrModal").modal('hide');
+			}
+		}, 1000);
+	};
 	</script>
 </body>
 

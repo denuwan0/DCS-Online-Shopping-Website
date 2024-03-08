@@ -37,6 +37,36 @@
 </head>
 
 <body>
+	<div class="modal" id="lankaQrModal">
+	  <div class="modal-dialog">
+		<div class="modal-content">
+
+		  <!-- Modal Header -->
+		  <div class="modal-header">
+			<div class="col-md-12" style="text-align:center">
+				<h4 class="">OTP Verification</h4>
+				<p class="m-0" id="countDown">60</p>
+				
+			</div>
+			
+			
+			<button type="button" class="close" data-dismiss="modal">&times;</button>
+		  </div>
+
+		  <!-- Modal Body -->
+		  <div class="modal-body">
+			
+			<input class="form-control" type="text" placeholder="OTP Code">
+		  </div>
+
+		  <!-- Modal Footer -->
+		  <div class="modal-footer">
+			<button type="button" class="btn btn-primary" data-dismiss="modal">Submit</button>
+		  </div>
+
+		</div>
+	  </div>
+	</div>
     <!-- Topbar Start -->
     <div class="container-fluid">
         <div class="row bg-secondary py-1 px-xl-5">
