@@ -4,7 +4,7 @@
             <div class="col-12">
                 <nav class="breadcrumb bg-light mb-30">
                     <a class="breadcrumb-item text-dark" href="<?php echo base_url();?>">Home</a>
-                    <span class="breadcrumb-item active">Register</span>
+                    <span class="breadcrumb-item active">Activation</span>
                 </nav>
             </div>
         </div>
@@ -16,49 +16,19 @@
     <div class="container-fluid">
         <div class="row px-xl-5">
             <div class="col-lg-12">
-                <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">Your Details</span></h5>
+                <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">Account activation</span></h5>
                 <div class="bg-light p-30 mb-5">
                     <div class="row">
-						<div class="col-md-6 form-group">
-                            <label>NIC No.</label>
-                            <input class="form-control" type="text" placeholder="NIC No." id="customer_old_nic_no">
+						<div class="col-md-12 form-group">
+                            <h4>Your account activation successfull! Please Login</h4>
                         </div>
-                        <div class="col-md-6 form-group">
-                            <label>Name</label>
-                            <input class="form-control" type="text" placeholder="First Name" id="customer_name">
+						<div class="col-md-12 form-group">
+                            <img src="<?php echo base_url();?>assets/img/login1.png" alt="Girl in a jacket" width="300" height="300">
                         </div>
-                        <div class="col-md-6 form-group">
-                            <label>E-mail</label>
-                            <input class="form-control" type="text" placeholder="example@email.com" id="customer_email">
-                        </div>
-                        <div class="col-md-6 form-group">
-                            <label>Mobile No</label>
-                            <input class="form-control" type="text" placeholder="94 712 917 184" id="customer_contact_no">
-                        </div>
-                        <div class="col-md-6 form-group">
-                            <label>NIC Address</label>
-                            <input class="form-control" type="text" placeholder="Address line 1" id="customer_working_address">
-                        </div>
-                        <div class="col-md-6 form-group">
-                            <label>Shipping Address</label>
-                            <input class="form-control" type="text" placeholder="Address line 2" id="customer_shipping_address">
-                        </div>
-                        <div class="col-md-6 form-group">
-                            <label>Password</label>
-                            <input class="form-control" type="password" placeholder="Password" id="password_">
-                        </div>
-                        <div class="col-md-6 form-group">
-                            <label>Confirm Password</label>
-                            <input class="form-control" type="password" placeholder="Confirm Password" id="confirm_password">
-                        </div>  
-                        <div class="col-md-12 form-group">
-                            <div class="">
-                                <button class="btn btn-primary py-2 px-4" type="button" id="registerBtn">Register</button>
-                            </div>
-                        </div>
+						
                     </div>
                 </div>
-              
+                
             </div>
             
         </div>
@@ -86,7 +56,7 @@
 	customer_contact_no = $('#customer_contact_no').val();
 	customer_email = $('#customer_email').val();
 	
-	password = $('#password_').val();
+	password = $('#password').val();
 	confirm_password = $('#confirm_password').val();
 		
 	//debugger;	
@@ -109,8 +79,7 @@
 				'customer_shipping_address': customer_shipping_address,
 				'customer_old_nic_no': customer_old_nic_no,
 				'customer_contact_no': customer_contact_no,
-				'customer_email': customer_email,
-				'password': password
+				'customer_email': customer_email
 			})
 			
 			var formData = new Object();

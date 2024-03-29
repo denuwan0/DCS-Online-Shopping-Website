@@ -99,7 +99,7 @@
 								else if($is_user_logged_in == false){
 									echo '	<form name="sentMessage" id="contactForm" novalidate="novalidate">
 												<div class="control-group">
-													<input type="text" class="form-control" id="username" placeholder="Username" required="required" data-validation-required-message="Please enter your name" autocomplete="off" aria-invalid="false">
+													<input type="text" class="form-control" id="username" placeholder="email" required="required" data-validation-required-message="Please enter your name" autocomplete="off" aria-invalid="false">
 													<p class="help-block text-danger"></p>
 												</div>
 												<div class="control-group">
@@ -108,10 +108,10 @@
 												</div>
 											</form>
 											<div class="row col-md-12 mb-2">
-												<button class="col-md-12 ml-3" type="button" id="signInBtn">Sign in</button>
+												<a  class="col-md-12 ml-3 btn btn-default" style="background: gold;color: black;" type="button" id="signInBtn">Sign in</a>
 											</div>
 											<div class="row col-md-12 mb-2">
-												<button class="col-md-12 ml-3" type="button" id="signOutBtn">Sign up</button>
+												<a href="http://localhost/web/Register" class="col-md-12 ml-3 btn btn-default" style="background: gold;color: black;" type="button" id="signOutBtn">Sign up</a>
 											</div>
 											<a href="http://localhost/web/PassReset" class="text-decoration-none">Reset Password</a>';
 								}

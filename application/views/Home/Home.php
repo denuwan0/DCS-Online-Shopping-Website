@@ -169,7 +169,7 @@ function loadProducts(){
 		dataType: "json",
 		url: API+"Online/products",
 		success: function(data, result){
-			//console.log(data);
+			console.log(data);
 			var FeaturePrdDiv = '';
 			var recentPrdDiv = '';
 			
@@ -186,9 +186,9 @@ function loadProducts(){
 											'</div>'+
 										'</div>'+
 										'<div class="text-center py-4">'+
-											'<a class="h6 text-decoration-none text-truncate" href="">Product Name Goes Here</a>'+
+											'<a class="h6 text-decoration-none text-truncate" href="">'+item.item_name+'</a>'+
 											'<div class="d-flex align-items-center justify-content-center mt-2">'+
-												'<h5>Rs.</h5><h5>1500</h5><!--h6 class="text-muted ml-2"><del>$123.00</del></h6-->'+
+												'<h5>Rs.</h5><h5>'+item.max_sale_price+'</h5><!--h6 class="text-muted ml-2"><del>$123.00</del></h6-->'+
 											'</div>'+
 										'</div>'+
 									'</div>'+
@@ -211,9 +211,9 @@ function loadProducts(){
 											'</div>'+
 										'</div>'+
 										'<div class="text-center py-4">'+
-											'<a class="h6 text-decoration-none text-truncate" href="">Product Name Goes Here</a>'+
+											'<a class="h6 text-decoration-none text-truncate" href="">'+item.item_name+'</a>'+
 											'<div class="d-flex align-items-center justify-content-center mt-2">'+
-												'<h5>Rs.</h5><h5>1500</h5><!--h6 class="text-muted ml-2"><del>$123.00</del></h6-->'+
+												'<h5>Rs.</h5><h5>'+item.max_sale_price+'</h5><!--h6 class="text-muted ml-2"><del>$123.00</del></h6-->'+
 											'</div>'+
 										'</div>'+
 									'</div>'+
