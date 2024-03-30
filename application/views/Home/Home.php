@@ -181,7 +181,7 @@ function loadProducts(){
 										'<div class="product-img position-relative overflow-hidden">'+
 											'<img class="img-fluid w-100" src="'+item.item_image_url+'" alt="">'+
 											'<div class="product-action">'+
-												'<a class="btn btn-outline-dark btn-square addToCart" value="'+item.item_id+'" amount="'+item.max_sale_price+'" item_name="'+item.item_name+'" item_image="'+item.item_image_url+'"><i class="fa fa-shopping-cart"></i></a>'+
+												'<a class="btn btn-outline-dark btn-square addToCart" value="'+item.item_id+'" item_qty="1" amount="'+item.max_sale_price+'" item_name="'+item.item_name+'" item_image="'+item.item_image_url+'"><i class="fa fa-shopping-cart"></i></a>'+
 												'<a class="btn btn-outline-dark btn-square" href="<?php echo base_url();?>product/detail/'+item.item_id+'"><i class="fa fa-search"></i></a>'+
 											'</div>'+
 										'</div>'+
@@ -206,7 +206,7 @@ function loadProducts(){
 										'<div class="product-img position-relative overflow-hidden" >'+
 											'<img class="img-fluid w-100"  src="'+item.item_image_url+'" alt="">'+
 											'<div class="product-action">'+
-												'<a class="btn btn-outline-dark btn-square addToCart" value="'+item.item_id+'" amount="'+item.max_sale_price+'" item_name="'+item.item_name+'" item_image="'+item.item_image_url+'"><i class="fa fa-shopping-cart"></i></a>'+
+												'<a class="btn btn-outline-dark btn-square addToCart" value="'+item.item_id+'" item_qty="1" amount="'+item.max_sale_price+'" item_name="'+item.item_name+'" item_image="'+item.item_image_url+'"><i class="fa fa-shopping-cart"></i></a>'+
 												'<a class="btn btn-outline-dark btn-square" href="<?php echo base_url();?>product/detail/'+item.item_id+'"><i class="fa fa-search"></i></a>'+
 											'</div>'+
 										'</div>'+

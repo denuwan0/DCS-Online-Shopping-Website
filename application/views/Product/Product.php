@@ -97,14 +97,14 @@
                                     <i class="fa fa-minus"></i>
                                 </button>
                             </div>
-                            <input type="text" class="form-control bg-secondary border-0 text-center" value="1">
+                            <input type="text" class="form-control bg-secondary border-0 text-center item_qty" value="1">
                             <div class="input-group-btn">
                                 <button class="btn btn-primary btn-plus">
                                     <i class="fa fa-plus"></i>
                                 </button>
                             </div>
                         </div>
-                        <button class="btn btn-primary px-3 addToCart" value="<?php echo $item_id;?>" amount="<?php echo $sale_price;?>" item_name="<?php echo $item_name;?>" item_image="<?php echo $item_image_url;?>"><i class="fa fa-shopping-cart mr-1"></i> Add To
+                        <button class="btn btn-primary px-3 addToCart" value="<?php echo $item_id;?>"  item_qty="" amount="<?php echo $sale_price;?>" item_name="<?php echo $item_name;?>" item_image="<?php echo $item_image_url;?>"><i class="fa fa-shopping-cart mr-1"></i> Add To
                             Cart
 						</button>
                     </div>
@@ -140,5 +140,12 @@
 
     
 <script>
-
+$(document).on('click', '.btn-plus', function() {
+	
+	//var item_price = parseFloat($(this).parent().parent().parent().parent().find('.item_price').text());
+	console.log($(this).parent().parent().find('.item_qty').val());
+	var item_qty = $(this).parent().parent().find('.item_qty').val();
+	
+	console.log($(this).parent().parent().parent().parent().find('.addToCart').attr('item_qty', item_qty));
+});
 </script>

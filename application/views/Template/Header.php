@@ -260,7 +260,7 @@ if(localStorage.getItem("customer_name") != null){
 			return [...new Map(cartArr.map(item => [item[key], item])).values()]
 		}
 
-		console.log(cartArr);
+		//console.log(cartArr);
 		$('.cartCount').html(cartArr.length);
 	}
 	
@@ -290,14 +290,14 @@ $(document).on('click', '.addToCart', function(){
 				var item_price = $(this).attr('amount');
 				var item_name = $(this).attr('item_name');
 				var item_image = $(this).attr('item_image');
-								
+				var item_qty = $(this).attr('item_qty');				
 				
 				cartArr.push({
 					'item_id': item_id,
 					'item_price': item_price,
 					'item_name': item_name,
 					'item_image': item_image,
-					'item_qty': 1
+					'item_qty': item_qty
 				})
 				let string = JSON.stringify(cartArr);
 				localStorage.setItem("cartArr", string);
@@ -323,5 +323,7 @@ $(document).on('click', '.addToCart', function(){
 		
 		console.log(localStorage.getItem("cartArr"));
 	})
+	
+
 </script>
     

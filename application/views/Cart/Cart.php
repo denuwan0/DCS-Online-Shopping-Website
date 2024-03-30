@@ -12,7 +12,7 @@
         </div>
     </div>
     <!-- Breadcrumb End -->
-
+	
 
     <!-- Cart Start -->
     <div class="container-fluid">
@@ -28,49 +28,9 @@
                             <th>Remove</th>
                         </tr>
                     </thead>
-                    <tbody class="align-middle">
-                        <tr>
-                            <td class="align-middle"><img src="http://localhost/API/assets/img/items/acro_jack.png" alt="" style="width: 50px;"> Acro Jack / Pipe Support</td>
-                            <td class="align-middle">Rs. 7000.00</td>
-                            <td class="align-middle">
-                                <div class="input-group quantity mx-auto" style="width: 100px;">
-                                    <div class="input-group-btn">
-                                        <button class="btn btn-sm btn-primary btn-minus" >
-                                        <i class="fa fa-minus"></i>
-                                        </button>
-                                    </div>
-                                    <input type="text" class="form-control form-control-sm bg-secondary border-0 text-center" value="1">
-                                    <div class="input-group-btn">
-                                        <button class="btn btn-sm btn-primary btn-plus">
-                                            <i class="fa fa-plus"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="align-middle">Rs. 35000.00</td>
-                            <td class="align-middle"><button class="btn btn-sm btn-danger"><i class="fa fa-times"></i></button></td>
-                        </tr>
-                        <tr>
-                            <td class="align-middle"><img src="http://localhost/API/assets/img/items/column_box_8.jpg" alt="" style="width: 50px;">Column box 8ft</td>
-                            <td class="align-middle">Rs. 7500.00</td>
-                            <td class="align-middle">
-                                <div class="input-group quantity mx-auto" style="width: 100px;">
-                                    <div class="input-group-btn">
-                                        <button class="btn btn-sm btn-primary btn-minus" >
-                                        <i class="fa fa-minus"></i>
-                                        </button>
-                                    </div>
-                                    <input type="text" class="form-control form-control-sm bg-secondary border-0 text-center" value="1">
-                                    <div class="input-group-btn">
-                                        <button class="btn btn-sm btn-primary btn-plus">
-                                            <i class="fa fa-plus"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="align-middle">Rs. 30000.00</td>
-                            <td class="align-middle"><button class="btn btn-sm btn-danger"><i class="fa fa-times"></i></button></td>
-                        </tr>
+                    <tbody class="align-middle" id="itemsDiv" style="height: 50px; overflow-y: auto; overflow-x: hidden;">
+                        
+                        
                     </tbody>
                 </table>
             </div>
@@ -81,7 +41,7 @@
                     <div class="border-bottom pb-2">
                         <div class="d-flex justify-content-between mb-3">
                             <h6>Subtotal</h6>
-                            <h6>Rs. 65000.00</h6>
+                            <h6 class="final_sub_total">0.00</h6>
                         </div>
                         <div class="d-flex justify-content-between">
                             <h6 class="font-weight-medium">Shipping</h6>
@@ -91,9 +51,9 @@
                     <div class="pt-2">
                         <div class="d-flex justify-content-between mt-2">
                             <h5>Total</h5>
-                            <h5>Rs. 65000.00</h5>
+                            <h5 class="final_grand_total">Rs. 0.00</h5>
                         </div>
-                        <a href="<?php echo base_url().'Checkout';?>" class="btn btn-block btn-primary font-weight-bold my-3 py-3">Proceed To Checkout</a>
+                        <a href="<?php echo base_url().'Checkout';?>" class="btn btn-block btn-primary font-weight-bold my-3 py-3 checkoutBtn">Proceed To Checkout</a>
                     </div>
                 </div>
             </div>
@@ -102,18 +62,133 @@
     <!-- Cart End -->
 
 <script>
-console.log(cartArr);
 
+
+var itemsDiv = '';
 $.each(cartArr, function(index, item) {
 	console.log(item);
+	itemsDiv += '<tr class="itemRaw">'+
+					'<input type="hidden" class="item_id" value="'+item.item_id+'">'+
+					'<input type="hidden" class="item_name" value="'+item.item_name+'">'+
+					'<td class="align-middle" align="left"><img src="'+item.item_image+'" alt="" style="width: 50px;">'+item.item_name+'</td>'+
+					'<td class="align-middle item_price">'+item.item_price+'</td>'+
+					'<td class="align-middle">'+
+						'<div class="input-group quantity mx-auto" style="width: 100px;">'+
+							'<div class="input-group-btn">'+
+								'<button class="btn btn-sm btn-primary btn-minus" >'+
+								'<i class="fa fa-minus"></i>'+
+								'</button>'+
+							'</div>'+
+							'<input type="text" class="form-control form-control-sm bg-secondary border-0 text-center item_qty" value="'+item.item_qty+'">'+
+							'<div class="input-group-btn">'+
+								'<button class="btn btn-sm btn-primary btn-plus">'+
+									'<i class="fa fa-plus"></i>'+
+								'</button>'+
+							'</div>'+
+						'</div>'+
+					'</td>'+
+					'<td class="align-middle sub_total">'+item.item_price+'</td>'+
+					'<td class="align-middle"><button class="btn btn-sm btn-danger"><i class="fa fa-times"></i></button></td>'+
+				'</tr>';
 })
 
-const arr1 = getUniqueListBy(cartArr, 'item_id')
+$('#itemsDiv').html(itemsDiv);
 
-function getUniqueListBy(arr, key) {
-    return [...new Map(cartArr.map(item => [item[key], item])).values()]
-}
+$(document).on('click', '.btn-plus', function() {
+	
+	var item_price = parseFloat($(this).parent().parent().parent().parent().find('.item_price').text());
+	var item_qty = parseFloat($(this).parent().parent().parent().find('.item_qty').val());
+	//console.log(item_qty);
+	var sub_total = parseFloat(item_price * item_qty).toFixed(2);
+	//console.log(sub_total);
+	$(this).parent().parent().parent().parent().find('.sub_total').text(sub_total);
+	
+	
+	var sum = 0;
+	$('.sub_total').each(function(){
+		sum += parseFloat($(this).text());
+	});
+	
+	$('.final_sub_total').text(sum.toFixed(2));
+	$('.final_grand_total').text(sum.toFixed(2));
+	
+	console.log(sum);
+	
+	//console.log($(this).parent().parent().parent().parent().find('.sub_total').text(sub_total));
+});
 
-console.log(arr1);
+$(document).on('click', '.btn-minus', function() {
+	
+	var item_price = parseFloat($(this).parent().parent().parent().parent().find('.item_price').text());
+	var item_qty = parseFloat($(this).parent().parent().parent().find('.item_qty').val());
+	//console.log(item_qty);
+	var sub_total = parseFloat(item_price * item_qty).toFixed(2);
+	//console.log(sub_total);
+	$(this).parent().parent().parent().parent().find('.sub_total').text(sub_total);
+	//console.log($(this).parent().parent().parent().parent().find('.sub_total').text(sub_total));
+	var sum = 0;
+	$('.sub_total').each(function(){
+		sum += parseFloat($(this).text());
+	});
+	
+	$('.final_sub_total').text(sum.toFixed(2));
+	$('.final_grand_total').text(sum.toFixed(2));
+});
 
+$(document).on('click', '.btn-danger', function() {
+	
+	console.log($(this).parent().parent().remove())
+	
+	var sum = 0;
+	$('.sub_total').each(function(){
+		sum += parseFloat($(this).text());
+	});
+	
+	$('.final_sub_total').text(sum.toFixed(2));
+	$('.final_grand_total').text(sum.toFixed(2));
+});
+
+$(document).on('click', '.checkoutBtn', function() {
+	var itemsArr = [];
+	console.log($(this).parent().parent().remove())
+	
+	$('.itemRaw').each(function(){
+		console.log($(this).find('.item_qty').val());
+		
+		var item_id = $(this).find('.item_id').val();
+		var item_price = $(this).find('.item_price').text();
+		var item_name = $(this).find('.item_name').val();
+		var item_image = $(this).find('item_image');
+		var sub_total = $(this).find('.sub_total').text();
+		var item_qty = $(this).find('.item_qty').val();
+		
+		itemsArr.push({
+			'item_id': item_id,
+			'item_price': item_price,
+			'item_name': item_name,
+			'item_image': item_image,
+			'sub_total': sub_total,
+			'item_qty': item_qty
+		})
+		
+		//debugger
+		
+		let string2 = JSON.stringify(itemsArr);
+		localStorage.setItem("itemsArr", string2);
+		
+	});
+	
+	console.log(itemsArr);
+});
+
+
+var sum = 0;
+$('.sub_total').each(function(){
+	sum += parseFloat($(this).text());
+});
+
+console.log(sum);
+
+$('.final_sub_total').text(sum.toFixed(2));
+$('.final_grand_total').text(sum.toFixed(2));
 </script>

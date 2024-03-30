@@ -237,6 +237,38 @@
     </div>
     <!-- Checkout End -->
 <script>
+console.log(itemsArr = JSON.parse(localStorage.getItem("itemsArr")));
+
+var itemsDiv = '';
+$.each(itemsArr, function(index, item) {
+	console.log(item);
+	itemsDiv += '<tr class="itemRaw">'+
+					'<input type="hidden" class="item_id" value="'+item.item_id+'">'+
+					'<input type="hidden" class="item_name" value="'+item.item_name+'">'+
+					'<td class="align-middle" align="left"><img src="'+item.item_image+'" alt="" style="width: 50px;">'+item.item_name+'</td>'+
+					'<td class="align-middle item_price">'+item.item_price+'</td>'+
+					'<td class="align-middle">'+
+						'<div class="input-group quantity mx-auto" style="width: 100px;">'+
+							'<div class="input-group-btn">'+
+								'<button class="btn btn-sm btn-primary btn-minus" >'+
+								'<i class="fa fa-minus"></i>'+
+								'</button>'+
+							'</div>'+
+							'<input type="text" class="form-control form-control-sm bg-secondary border-0 text-center item_qty" value="'+item.item_qty+'">'+
+							'<div class="input-group-btn">'+
+								'<button class="btn btn-sm btn-primary btn-plus">'+
+									'<i class="fa fa-plus"></i>'+
+								'</button>'+
+							'</div>'+
+						'</div>'+
+					'</td>'+
+					'<td class="align-middle sub_total">'+item.item_price+'</td>'+
+					'<td class="align-middle"><button class="btn btn-sm btn-danger"><i class="fa fa-times"></i></button></td>'+
+				'</tr>';
+})
+
+$('#itemsDiv').html(itemsDiv);
+
 $('#PayNowBtn').click(function(){
 	var payType = $(this).parent().parent().find('.payment').attr('id');
 	console.log( $('input[name=payment]:radio:checked').attr('id'));
