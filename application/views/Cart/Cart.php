@@ -70,7 +70,7 @@ $.each(cartArr, function(index, item) {
 	itemsDiv += '<tr class="itemRaw">'+
 					'<input type="hidden" class="item_id" value="'+item.item_id+'">'+
 					'<input type="hidden" class="item_name" value="'+item.item_name+'">'+
-					'<td class="align-middle" align="left"><img src="'+item.item_image+'" alt="" style="width: 50px;">'+item.item_name+'</td>'+
+					'<td class="align-middle" align="left"><img class="item_image" src="'+item.item_image+'" alt="" style="width: 50px;">'+item.item_name+'</td>'+
 					'<td class="align-middle item_price">'+item.item_price+'</td>'+
 					'<td class="align-middle">'+
 						'<div class="input-group quantity mx-auto" style="width: 100px;">'+
@@ -158,7 +158,7 @@ $(document).on('click', '.checkoutBtn', function() {
 		var item_id = $(this).find('.item_id').val();
 		var item_price = $(this).find('.item_price').text();
 		var item_name = $(this).find('.item_name').val();
-		var item_image = $(this).find('item_image');
+		var item_image = $(this).find('.item_image');
 		var sub_total = $(this).find('.sub_total').text();
 		var item_qty = $(this).find('.item_qty').val();
 		
@@ -166,7 +166,7 @@ $(document).on('click', '.checkoutBtn', function() {
 			'item_id': item_id,
 			'item_price': item_price,
 			'item_name': item_name,
-			'item_image': item_image,
+			//'item_image': item_image,
 			'sub_total': sub_total,
 			'item_qty': item_qty
 		})
