@@ -55,13 +55,13 @@
 
 		  <!-- Modal Body -->
 		  <div class="modal-body">
-			
-			<input class="form-control" type="text" placeholder="OTP Code">
+			<input class="form-control" type="hidden" placeholder="OTP Code" id="user_id">
+			<input class="form-control" type="text" placeholder="OTP Code" id="modalInput">
 		  </div>
 
 		  <!-- Modal Footer -->
 		  <div class="modal-footer">
-			<button type="button" class="btn btn-primary" data-dismiss="modal">Submit</button>
+			<button type="button" id="modalSubmitBtn" class="btn btn-primary" data-dismiss="modal">Submit</button>
 		  </div>
 
 		</div>
@@ -80,42 +80,45 @@
             </div>
             <div class="col-lg-6 text-center text-lg-right">
                 <div class="d-inline-flex align-items-center">
+					<button style="display:none;" class="btn btn-sm btn-dark" id="customerName"></button>
                     <div class="btn-group">
+						
                         <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">My Account</button>
                         <div class="dropdown-menu dropdown-menu-right" style="min-width:18rem">
-							<div class="col-md-12">
+							<div class="col-md-12" id="loggedOutDiv">
+								<!--div class="row col-md-12 mb-2">
+									<button class="col-md-12 ml-3" type="button" id="profileBtn">My Profile</button>
+								</div-->
 								
+								<form name="sentMessage" id="contactForm"  novalidate="novalidate">
+									<div class="control-group">
+										<input type="text" class="form-control" id="username" placeholder="email" required="required" data-validation-required-message="Please enter your name" autocomplete="off" aria-invalid="false">
+										<p class="help-block text-danger"></p>
+									</div>
+									<div class="control-group">
+										<input type="password" class="form-control" id="password" placeholder="Password" required="required" data-validation-required-message="Please enter your email">
+										<p class="help-block text-danger"></p>
+									</div>
+								</form>
+								<div class="row col-md-12 mb-2">
+									<a  class="col-md-12 ml-3 btn btn-default" style="background: gold;color: black;" type="button" id="signInBtn">Sign in</a>
+								</div>
+								<div class="row col-md-12 mb-2">
+									<a href="http://localhost/web/Register" class="col-md-12 ml-3 btn btn-default" style="background: gold;color: black;" type="button" id="signOutBtn">Sign up</a>
+								</div>
+								<a href="http://localhost/web/PassReset" class="text-decoration-none">Reset Password</a>
 							
-							<?php 
-								$is_user_logged_in = false;
-								if($is_user_logged_in == true){
-									echo '<div class="row col-md-12 mb-2">
-												<button class="col-md-12 ml-3" type="button" id="profileBtn">My Profile</button>
-											</div>
-											<div class="row col-md-12 mb-2">
-												<button class="col-md-12 ml-3" type="button" style="background: gold;" id="logOutBtn">Logout</button>
-											</div>';
-								}
-								else if($is_user_logged_in == false){
-									echo '	<form name="sentMessage" id="contactForm" novalidate="novalidate">
-												<div class="control-group">
-													<input type="text" class="form-control" id="username" placeholder="email" required="required" data-validation-required-message="Please enter your name" autocomplete="off" aria-invalid="false">
-													<p class="help-block text-danger"></p>
-												</div>
-												<div class="control-group">
-													<input type="password" class="form-control" id="password" placeholder="Password" required="required" data-validation-required-message="Please enter your email">
-													<p class="help-block text-danger"></p>
-												</div>
-											</form>
-											<div class="row col-md-12 mb-2">
-												<a  class="col-md-12 ml-3 btn btn-default" style="background: gold;color: black;" type="button" id="signInBtn">Sign in</a>
-											</div>
-											<div class="row col-md-12 mb-2">
-												<a href="http://localhost/web/Register" class="col-md-12 ml-3 btn btn-default" style="background: gold;color: black;" type="button" id="signOutBtn">Sign up</a>
-											</div>
-											<a href="http://localhost/web/PassReset" class="text-decoration-none">Reset Password</a>';
-								}
-							?>
+							</div>
+							<div class="col-md-12" id="loggedInDiv" style="display:none">
+								<!--div class="row col-md-12 mb-2">
+									<button class="col-md-12 ml-3" type="button" id="profileBtn">My Profile</button>
+								</div-->
+								<div class="row col-md-12 mb-2">
+									<button class="col-md-12 ml-3" type="button" style="background: gold;" id="logOutBtn">Logout</button>
+								</div>	
+								
+								<a href="http://localhost/web/PassReset" class="text-decoration-none">Reset Password</a>
+							
 							</div>
                         </div>
                     </div>
@@ -196,12 +199,12 @@
                             <a href="<?php echo base_url().'Shop';?>" class="nav-item nav-link">Shop</a>
                             <!--a href="<?php echo base_url().'Product';?>" class="nav-item nav-link">Shop Detail</a-->
 							<a href="<?php echo base_url().'Cart';?>" class="nav-item nav-link">Shopping Cart</a>                            
-                            <a href="<?php echo base_url().'Contact';?>" class="nav-item nav-link">Contact</a>
+                            <!--a href="<?php echo base_url().'Contact';?>" class="nav-item nav-link">Contact</a-->
                         </div>
                         <div class="navbar-nav ml-auto py-0 d-none d-lg-block">
-                            <a href="" class="btn px-0 ml-3">
+                            <a href="http://localhost/web/Cart" class="btn px-0 ml-3">
                                 <i class="fas fa-shopping-cart text-primary"></i>
-                                <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;">0</span>
+                                <span class="badge text-secondary border border-secondary rounded-circle cartCount" style="padding-bottom: 2px;">0</span>
                             </a>
                         </div>
                     </div>
@@ -241,5 +244,84 @@ function loadCategories(){
 	});
 }
 loadCategories();
+var cartArr = [];
+
+if(localStorage.getItem("customer_name") != null){
+	$('#customerName').html('Welcome back '+localStorage.getItem("customer_name"));
+	$('#customerName').css("display", "block");
+	$('#loggedInDiv').css("display", "block");
+	$('#loggedOutDiv').css("display", "none");
+	
+	if(localStorage.getItem("cartArr") != null ){
+		cartArr = JSON.parse(localStorage.getItem("cartArr"));
+		cartArr = getUniqueListBy(cartArr, 'item_id')
+
+		function getUniqueListBy(arr, key) {
+			return [...new Map(cartArr.map(item => [item[key], item])).values()]
+		}
+
+		console.log(cartArr);
+		$('.cartCount').html(cartArr.length);
+	}
+	
+}
+
+$(document).on('click', '.addToCart', function(){
+		if(localStorage.getItem("customer_name") == null){
+			const notyf = new Notyf();
+			
+			notyf.error({
+			  message: 'Please login to proceed!',
+			  duration: 5000,
+			  icon: true,
+			  ripple: true,
+			  dismissible: true,
+			  position: {
+				x: 'right',
+				y: 'top',
+			  }
+			  
+			})			
+		}
+		else{
+				
+				
+				var item_id = $(this).attr('value');
+				var item_price = $(this).attr('amount');
+				var item_name = $(this).attr('item_name');
+				var item_image = $(this).attr('item_image');
+								
+				
+				cartArr.push({
+					'item_id': item_id,
+					'item_price': item_price,
+					'item_name': item_name,
+					'item_image': item_image,
+					'item_qty': 1
+				})
+				let string = JSON.stringify(cartArr);
+				localStorage.setItem("cartArr", string);
+			
+			//console.log(cartArr);	
+			const notyf = new Notyf();
+			
+			notyf.success({
+			  message: 'Item added to cart!',
+			  duration: 5000,
+			  icon: true,
+			  ripple: true,
+			  dismissible: true,
+			  position: {
+				x: 'right',
+				y: 'top',
+			  }
+			  
+			})		
+			
+			$('.cartCount').html(cartArr.length);
+		}
+		
+		console.log(localStorage.getItem("cartArr"));
+	})
 </script>
     

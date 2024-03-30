@@ -28,7 +28,7 @@
                             <input class="form-control" type="text" placeholder="First Name" id="customer_name">
                         </div>
                         <div class="col-md-6 form-group">
-                            <label>E-mail</label>
+                            <label>E-mail (this will be your username/email for login)</label>
                             <input class="form-control" type="text" placeholder="example@email.com" id="customer_email">
                         </div>
                         <div class="col-md-6 form-group">
@@ -144,9 +144,9 @@
 						  }
 						  
 						})
-						/* window.setTimeout(function() {
-							window.location = "<?php echo base_url() ?>subItem/view";
-						}, 3000); */
+						window.setTimeout(function() {
+							window.location = "<?php echo base_url() ?>web";
+						}, 3000);
 					}	
 					
 				},

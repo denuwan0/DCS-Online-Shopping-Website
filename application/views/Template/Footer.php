@@ -70,6 +70,15 @@
     <!-- Template Javascript -->
     <script src="<?php echo base_url();?>assets/js/main.js"></script>
 	<script>
+	
+	
+	
+	
+	$(document).on('click', '#logOutBtn', function(){
+		localStorage.clear();
+		window.location.reload();
+	})
+	
 	$(document).on('click', '#signInBtn', function(){
 		var username = $('#username').val();
 		var password = $('#password').val();
@@ -79,22 +88,33 @@
 	
 	function logIn(username, password){
 		
-		var formData = new FormData();
-        formData.append('username',username);
-		formData.append('password',password);
-		$("#lankaQrModal").modal('show');
+		var loginArr = [];
+		
+		loginArr.push({
+			'username': username,
+			'password': password
+		})
+		
+		var formData = new Object();
+		formData = {
+			loginArr:loginArr
+		};
+				
+		
 		$.ajax({
 			type: "POST",
 			async: true,
 			dataType: "json",
-			data: formData,	
+			data: JSON.stringify(formData),	
 			processData: false,     
 			contentType: false,     
 			cache: false,
-			url: API+"SysUser/login/",
+			url: API+"Online/login/",
 			success: function(data, result){			
 				console.log(data);	
 				countDown();	
+				$('#user_id').val(data.user_id);
+				
 				$("#lankaQrModal").modal('show');
 								
 			},
@@ -125,9 +145,63 @@
 				// Display a login box
 				clearInterval(interval);
 				$("#lankaQrModal").modal('hide');
+				
+				window.location.reload();
 			}
 		}, 1000);
 	};
+	
+	$(document).on('click', '#modalSubmitBtn', function(){
+		var otp = $('#modalInput').val();
+		var user_id = $('#user_id').val();
+		
+		var otpArr = [];
+		
+		otpArr.push({
+			'otp': otp,
+			'user_id': user_id
+		})
+		
+		var formData = new Object();
+		formData = {
+			otpArr:otpArr
+		};
+				
+		
+		$.ajax({
+			type: "POST",
+			async: true,
+			dataType: "json",
+			data: JSON.stringify(formData),	
+			processData: false,     
+			contentType: false,     
+			cache: false,
+			url: API+"Online/verifyOtp/",
+			success: function(data, result){			
+				console.log(data);	
+				countDown();	
+				$("#lankaQrModal").modal('hide');
+				
+				localStorage.setItem("user_id", data.user_id);
+				localStorage.setItem("customer_id", data.customer_id);
+				localStorage.setItem("customer_name", data.customer_name);
+				localStorage.setItem("customer_shipping_address", data.customer_shipping_address);
+				localStorage.setItem("customer_old_nic_no", data.customer_old_nic_no);
+				localStorage.setItem("customer_contact_no", data.customer_contact_no);
+				localStorage.setItem("customer_email", data.customer_email);
+				localStorage.setItem("logged_in", data.logged_in);
+				
+				console.log(localStorage.getItem("user_id"));
+				window.location.reload();
+				
+			},
+			error: function(XMLHttpRequest, textStatus, errorThrown) {						
+				console.log(textStatus);					
+			}
+		});
+		
+	})
+	
 	</script>
 </body>
 

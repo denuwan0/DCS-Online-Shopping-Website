@@ -104,7 +104,7 @@
                                 </button>
                             </div>
                         </div>
-                        <button class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i> Add To
+                        <button class="btn btn-primary px-3 addToCart" value="<?php echo $item_id;?>" amount="<?php echo $sale_price;?>" item_name="<?php echo $item_name;?>" item_image="<?php echo $item_image_url;?>"><i class="fa fa-shopping-cart mr-1"></i> Add To
                             Cart
 						</button>
                     </div>

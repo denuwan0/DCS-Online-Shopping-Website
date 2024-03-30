@@ -101,3 +101,19 @@
     </div>
     <!-- Cart End -->
 
+<script>
+console.log(cartArr);
+
+$.each(cartArr, function(index, item) {
+	console.log(item);
+})
+
+const arr1 = getUniqueListBy(cartArr, 'item_id')
+
+function getUniqueListBy(arr, key) {
+    return [...new Map(cartArr.map(item => [item[key], item])).values()]
+}
+
+console.log(arr1);
+
+</script>
