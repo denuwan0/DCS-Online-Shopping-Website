@@ -112,7 +112,7 @@ $(document).on('click', '.btn-plus', function() {
 	$('.final_sub_total').text(sum.toFixed(2));
 	$('.final_grand_total').text(sum.toFixed(2));
 	
-	console.log(sum);
+	//console.log(sum);
 	
 	//console.log($(this).parent().parent().parent().parent().find('.sub_total').text(sub_total));
 });
@@ -150,7 +150,7 @@ $(document).on('click', '.btn-danger', function() {
 
 $(document).on('click', '.checkoutBtn', function() {
 	var itemsArr = [];
-	console.log($(this).parent().parent().remove())
+	//console.log($(this).parent().parent().remove())
 	
 	$('.itemRaw').each(function(){
 		console.log($(this).find('.item_qty').val());
@@ -178,7 +178,7 @@ $(document).on('click', '.checkoutBtn', function() {
 		
 	});
 	
-	console.log(itemsArr);
+	//console.log(itemsArr);
 });
 
 
@@ -187,7 +187,7 @@ $('.sub_total').each(function(){
 	sum += parseFloat($(this).text());
 });
 
-console.log(sum);
+//console.log(sum);
 
 $('.final_sub_total').text(sum.toFixed(2));
 $('.final_grand_total').text(sum.toFixed(2));
