@@ -125,6 +125,8 @@
                         </div>
                         <button class="btn btn-block btn-primary font-weight-bold py-3" id="saveOrderBtn">Submit Order</button>
                     </div>
+					
+				<a style="display:none;" class="downloadPdf" id="downloadPdf" href="http://localhost/API/Online/printInvoice/" target="_blank"></a>
                 </div>
             </div>
         </div>
@@ -244,8 +246,9 @@ $('#saveOrderBtn').click(function(e){
 			url: API+"Online/saveOrder/",
 			success: function(data, result){
 				console.log(data);	
+				console.log(data['order_id']);	
 				const notyf = new Notyf();
-				if(data['message'] == 'Data Saved!'){
+				if(data['message'] == 'Order received! Will contact you for order confirmation, thank you.'){
 					notyf.success({
 					  message: data['message'],
 					  duration: 5000,
@@ -258,9 +261,14 @@ $('#saveOrderBtn').click(function(e){
 					  }
 					  
 					})
-					window.setTimeout(function() {
+					
+					var id = data['order_id'];
+					
+					//$('#downloadPdf').attr("href", "http://localhost/API/Online/printInvoice/?id="+id);
+					//$('#downloadPdf')[0].click();	
+					/* window.setTimeout(function() {
 						window.location = "<?php echo base_url() ?>subItem/view";
-					}, 3000);
+					}, 3000); */
 				}	
 				
 			},
